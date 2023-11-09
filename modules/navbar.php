@@ -3,6 +3,8 @@
 
 if (isset($_POST['logout'])) {
     setcookie('namaplg', '', time() + (86400 * 30), "/");
+    setcookie('idplg', '', time() + (86400 * 30), "/");
+    setcookie('emailplg', '', time() + (86400 * 30), "/");
     header("Location: home.php");
 }
 

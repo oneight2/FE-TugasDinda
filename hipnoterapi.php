@@ -39,7 +39,7 @@ $queryterapis = mysqli_query($connection, "SELECT terapis_id, terapis_nama, usia
                 <h5 class="card-title"><?php echo $data['terapis_nama']; ?></h5>
                 <p class="card-text"><?php echo $data['usia_terapis']; ?></p>
                 <p class="card-text"><?php echo $data['deskripsi_terapis']; ?></p>
-                <a href="pemesananhipno.php" class="btn btn-primary">Lakukan Pemesanan Hipnoterapi</a>
+                <a href="pemesananhipno.php?id=<?= $data['terapis_id'] ?>" class="btn btn-primary">Lakukan Pemesanan Hipnoterapi</a>
               </div>
             </div>
           </div>

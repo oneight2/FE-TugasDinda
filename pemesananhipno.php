@@ -31,21 +31,18 @@ session_start();
         include "includes/configg.php";
 
         if (isset($_POST['simpan'])) {
-
-
-
-
-
           $tgl = $_POST['inputtgl'];
           $waktu = $_POST['inputwkt'];
           $umur = $_POST['inputumur'];
           $durasi = $_POST['inputdurasi'];
           $lokasi = $_POST['inputlokasi'];
           $catatan = $_POST['inputctt'];
+          $pelanggan_id = $_COOKIE['idplg'];
+          $terapis_id = $_GET['id'];
 
 
-          mysqli_query($connection, "insert into pesanan_hipnoterapi values ('','','$tgl','$waktu',
-    '$umur','$durasi','$lokasi','$catatan')");
+          mysqli_query($connection, "INSERT INTO pesanan_hipnoterapi values ('','$pelanggan_id','$terapis_id','$tgl','$waktu',
+          '$umur','$durasi','$lokasi','$catatan')");
 
           header("location:pemesananhipno.php");
         }
