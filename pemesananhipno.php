@@ -44,7 +44,7 @@ session_start();
           mysqli_query($connection, "INSERT INTO pesanan_hipnoterapi values ('','$pelanggan_id','$terapis_id','$tgl','$waktu',
           '$umur','$durasi','$lokasi','$catatan')");
 
-          header("location:pemesananhipno.php");
+          // header("location:pemesananhipno.php");
         }
 
 

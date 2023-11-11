@@ -24,10 +24,17 @@ session_start();
 
     if (mysqli_num_rows($sql_login) > 0) {
       $row_admin = mysqli_fetch_array($sql_login);
-      setcookie('namaplg', $row_admin['pelanggan_nama'], time() + (86400 * 30), "/");
-      setcookie('idplg', $row_admin['pelanggan_id'], time() + (86400 * 30), "/");
-      setcookie('emailplg', $row_admin['email'], time() + (86400 * 30), "/");
-      header("location:hipnoterapi.php");
+      // print_r($row_admin);
+      if (isset($row_admin)) {
+        setcookie('namaplg', $row_admin['pelanggan_nama'], time() + (86400 * 30), "/");
+        setcookie('idplg', $row_admin['pelanggan_id'], time() + (86400 * 30), "/");
+        setcookie('emailplg', $row_admin['email'], time() + (86400 * 30), "/");
+        setcookie('teleponplg', $row_admin['telepon'], time() + (86400 * 30), "/");
+        setcookie('usiaplg', $row_admin['usia'], time() + (86400 * 30), "/");
+        setcookie('alamatplg', $row_admin['alamat'], time() + (86400 * 30), "/");
+        header("location:hipnoterapi.php");
+      }
+      exit();
     } else {
       echo "<div class='alert alert-danger' role='alert'>Username atau Password Salah!</div>";
     }

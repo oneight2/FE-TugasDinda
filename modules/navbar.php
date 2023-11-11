@@ -1,12 +1,15 @@
 <!--BUAT MENU-->
 <?php
-
 if (isset($_POST['logout'])) {
     setcookie('namaplg', '', time() + (86400 * 30), "/");
     setcookie('idplg', '', time() + (86400 * 30), "/");
     setcookie('emailplg', '', time() + (86400 * 30), "/");
-    header("Location: home.php");
+    setcookie('teleponplg', '', time() + (86400 * 30), "/");
+    setcookie('usiaplg', '', time() + (86400 * 30), "/");
+    setcookie('alamatplg', '', time() + (86400 * 30), "/");
+    // header("location:home.php");
 }
+
 
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-#C8E3D4" style="background-color:#FFF6F6; box-shadow: 0 .5rem 1rem rgba(0,0,0,.3)">
@@ -47,7 +50,7 @@ if (isset($_POST['logout'])) {
                         <?php echo ($_COOKIE['namaplg']) ?>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#profileModal">Profile</a></li>
                         <li>
                             <form method="post">
                                 <input type="submit" name="logout" value="Logout" class="dropdown-item text-red">
@@ -56,9 +59,45 @@ if (isset($_POST['logout'])) {
                     </ul>
                 </li>
             <?php endif ?>
-
-
-
         </ul>
     </div>
 </nav>
+<?php if (isset($_COOKIE['namaplg'])) : ?>
+    <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">PROFILE</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <p class="mb-0">Nama</p>
+                        <p class="font-weight-bold"><?= $_COOKIE['namaplg'] ?></p>
+                    </div>
+                    <div>
+                        <p class="mb-0">Usia</p>
+                        <p class="font-weight-bold"><?= $_COOKIE['usiaplg'] ?></p>
+                    </div>
+                    <div>
+                        <p class="mb-0">Email</p>
+                        <p class="font-weight-bold"><?= $_COOKIE['emailplg'] ?></p>
+                    </div>
+                    <div>
+                        <p class="mb-0">Telepon</p>
+                        <p class="font-weight-bold"><?= $_COOKIE['teleponplg'] ?></p>
+                    </div>
+                    <div>
+                        <p class="mb-0">Alamat</p>
+                        <p class="font-weight-bold"><?= $_COOKIE['alamatplg'] ?></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif ?>
